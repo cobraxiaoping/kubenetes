@@ -12,7 +12,7 @@ spec:
       served: true
       storage: true
   version: v1
-  #范围是属于namespace的
+  #范围是属于集群的 ，可选值也可以是Namespaced
   scope: Cluster
   names:
     plural: apiproducts
