@@ -1,13 +1,11 @@
 package com.web.cobra.k8s.crd;
 
 import java.util.Collections;
-
 import org.springframework.stereotype.Component;
-
 import com.web.cobra.k8s.crd.client.KubeUtil;
-
 import io.fabric8.kubernetes.api.model.apiextensions.CustomResourceDefinition;
 import io.fabric8.kubernetes.api.model.apiextensions.CustomResourceDefinitionBuilder;
+import io.fabric8.kubernetes.api.model.apiextensions.CustomResourceDefinitionList;
 import io.fabric8.kubernetes.api.model.apiextensions.CustomResourceDefinitionVersionBuilder;
 
 /**  
@@ -59,5 +57,49 @@ public class ResourceDefinition {
 	public CustomResourceDefinition createResourceDefinition2() {
 		 CustomResourceDefinition resourceDefinition = KubeUtil.getClient().customResourceDefinitions().load(getClass().getResourceAsStream("/crd/resource-definition.yaml")).get();
 		 return KubeUtil.getClient().customResourceDefinitions().create(resourceDefinition);
+	}
+	
+	
+	/**  
+	 * @Method: listAllResourceDefinition  
+	 * @Description: 获取所有的自定义资源
+	 * @param: 
+	 * @return: void
+	 * @throws  
+	 */  
+	public CustomResourceDefinitionList findAllResourceDefinition() {
+		return KubeUtil.getClient().customResourceDefinitions().list();
+	}
+	
+	
+	/**  
+	 * @Method: getResourceDefinition  
+	 * @Description: 根据条件查找资源定义
+	 * @return: void
+	 * @throws  
+	 */  
+	public CustomResourceDefinition findResourceDefinitionByCondition() {
+		return KubeUtil.getClient().customResourceDefinitions().withName("apiproducts.cobra.xp").get();
+	}
+	
+	/**  
+	 * @Method: updateResourceDefinition  
+	 * @Description: 更新资源定义
+	 * @param: @return
+	 * @return: CustomResourceDefinition
+	 * @throws  
+	 */  
+	public CustomResourceDefinition updateResourceDefinition() {
+		 return KubeUtil.getClient().customResourceDefinitions().withName("apiproducts.cobra.xp").edit().editSpec().editOrNewNames().addNewShortName("ap").endNames().endSpec().done();
+	}
+	
+	/**  
+	 * @Method: deleteResourceDefinition  
+	 * @Description: 刪除资源定义
+	 * @return: Boolean
+	 * @throws  
+	 */  
+	public Boolean deleteResourceDefinition() {
+		return KubeUtil.getClient().customResourceDefinitions().withName("apiproducts.cobra.xp").delete();
 	}
 }
