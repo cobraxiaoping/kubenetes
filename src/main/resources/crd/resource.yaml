@@ -1,0 +1,139 @@
+apiVersion: "cobra.xp/v1"
+kind: ApiProudct
+metadata:
+  # 产品id
+  name: product-id-1  
+  labels:
+    id: ''
+    name: ''
+    project-id: ''
+    owner-user-id: user-1
+    type: ''
+    function: ''
+    status: ''
+    api-status: ''
+    approval-status: ''
+spec:
+  # id
+  id: ''
+  # 关联项目id
+  project-id: ''
+  # 归宿用户
+  owner-user-id: user-1
+  # 产品名称
+  name: product-1
+  # 产品描述
+  description: ''
+  # 产品介绍
+  introduce: ''
+  # 功能
+  function: ''
+  # 产品类型
+  type: ''
+  # 文档Id列表
+  doc-id-list:
+    - doc-1
+    - doc-2
+  # 订阅次数
+  subscription-time: 10
+  # 标签
+  label:
+    - 标签1
+    - 标签2
+  # 图标
+  icon: ''
+  # 审批状态
+  approval-status: ''
+  # 审批意见
+  approval-opinion: ''
+  # 审核时间
+  approval-time: ''
+  # 状态: 未发布、上架、下架
+  status: ''
+  # API定义
+  apidefinition:
+    # http 协议设置
+    http-protocol:
+    - http
+    - https
+    # 状态
+    status: ''
+    # 服务
+    service:
+      # 服务endpoint地址
+      endpoint: https://same-service/
+      # 全局策略
+      strategies:
+      - id: ''
+        # 策略类型：限流
+        type: rate-limit
+        config:
+          unit: day
+          value: 10000
+      # 安全认证
+      security-mode:
+        # jwt认证
+        type: auth-jwt
+        config:
+          encryption: RSA
+          key: ''
+    # 路径
+    paths:
+      - id: ''
+        # 路径
+        path: '/user/'
+        # 应用子路径
+        enable-subpath: true
+        # http方法
+        http-method:
+        - GET
+        - POST
+        - PUT
+        # 策略
+        strategies:
+        - id: ''
+          # 策略类型：限流
+          type: rate-limit
+          config:
+            unit: day
+            value: 10000
+        - id: ''
+           # 策略类型：ip限制
+          type: ip-limit
+          config:
+            black-list: 10.1.1.1/24
+            white-list: 10.0.0.1,10.1.1.1/24
+  # 订阅计划
+  subscription-plans:
+    - id: ''
+      # 订阅计划名称
+      name: '试用'
+      # 计划类型：试用
+      type: 'tryout'
+      strategies:
+      - id: ''
+        type: time-limit
+        config:
+          unit: day
+          value: 7    
+    - id: ''
+      # 订阅计划名称
+      name: '套餐1'
+      # 计划类型：配额
+      type: 'quota'
+      strategies:
+      - id: ''
+        type: rate-limit
+        config:
+          unit: day
+          value: 10000
+  # 创建日期
+  create-time: 2019-03-26
+  # 更新日期
+  update-time: 2019-03-26
+  # 发布日期
+  release-time: 2019-03-26
+  # 创建用户
+  create-user-id: user-id-1
+  # 更新用户
+  update-user-id: user-id-1

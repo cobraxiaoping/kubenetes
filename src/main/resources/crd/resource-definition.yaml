@@ -1,0 +1,20 @@
+#apiVersion 自定义资源定义的指定版本，固定写法（k8s要求1.7以上）
+apiVersion: apiextensions.k8s.io/v1beta1
+#kind 自定义资源的类型，固定写法
+kind: CustomResourceDefinition
+#metadata中的name=plural值的小写.group组成
+metadata:
+  name: apiproducts.cobra.xp
+spec:
+  group: cobra.xp
+  versions:
+    - name: v1
+      served: true
+      storage: true
+  version: v1
+  #范围是属于namespace的
+  scope: Cluster
+  names:
+    plural: apiproducts
+    singular: apiproduct
+    kind: ApiProudct
