@@ -1,0 +1,29 @@
+# 定义了一个狗狗的信息数据，labels中的字段用于筛选
+apiVersion: "cobra.xp/v1"
+kind: Animal
+metadata:
+  # dog的唯一标识类似主键ID
+  name: "dog-01"  
+  labels:
+    # 狗狗的名称
+    nickName: "putong"
+    # 狗狗的岁数
+    age: "2"
+    # 狗狗的照片
+    image: ""
+    # 记录的添加时间
+    create-time: 2019-05-05
+spec:
+  # 狗狗的名称
+  nickName: "putong"
+  # 狗狗的岁数
+  age: "2"
+  # 狗狗的照片
+  image: ""
+  # 记录的添加时间
+  create-time: 2019-05-05
+
+
+
+
+ 

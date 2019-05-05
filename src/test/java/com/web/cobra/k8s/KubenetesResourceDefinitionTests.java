@@ -16,7 +16,7 @@ import io.fabric8.kubernetes.api.model.apiextensions.CustomResourceDefinitionLis
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class KubenetesApplicationTests {
+public class KubenetesResourceDefinitionTests {
 
 	@Autowired
 	private ResourceDefinition resourceDefinition;
